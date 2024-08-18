@@ -1,9 +1,12 @@
+import Layout from "../components/Layout";
+
 function Home() {
 	return (
-		<>
-			<h1>Profile</h1>
-			<p>Welcome!</p>
-		</>
+		<Layout>
+			<div className="h-screen flex justify-center items-center">
+				<h1>Welcome!</h1>
+			</div>
+		</Layout>
 	);
 }
 

@@ -41,6 +41,7 @@ function LoginForm() {
 		>
 			<Form>
 				<div className="container mx-auto w-full sm:w-96 flex flex-col gap-2 text-left bg-white rounded-md p-10">
+					<h1 className="text-2xl font-semibold">Login</h1>
 					{error && (
 						<div className="p-3 bg-red-300 text-xs mb-3 rounded">
 							{error}

@@ -1,11 +1,11 @@
-import { Redirect } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import PropTypes from 'prop-types';
 import { getUser } from "../hooks/user.actions";
 
 function ProtectedRoute({ children }) {
 	const user = getUser();
 
-	return user ? <>{children}</> : <Redirect to="/login/" />;
+	return user ? <>{children}</> : <Navigate to="/login/" />;
 }
 
 ProtectedRoute.propTypes = {

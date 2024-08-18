@@ -32,10 +32,9 @@ function RegisterForm() {
 	};
 
 	const onSubmit = async (data) => {
-		userActions.register(data)
-			.catch((err) => {
-				if (err.message) setError(err.response.data?.detail);
-			});
+		userActions.register(data).catch((err) => {
+			if (err.message) setError(err.response.data?.detail);
+		});
 	};
 
 	const renderError = (message) => (
@@ -54,6 +53,7 @@ function RegisterForm() {
 			{({ errors, touched }) => (
 				<Form>
 					<div className="container mx-auto w-full sm:w-[30em] flex flex-col gap-2 text-left bg-white rounded-md p-10">
+						<h1 className="text-2xl font-semibold">Register for Free</h1>
 						{error && (
 							<div className="p-3 bg-red-300 text-xs mb-3 rounded">
 								{error}
