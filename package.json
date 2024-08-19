@@ -10,7 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@headlessui/react": "^2.1.2",
     "axios": "^1.7.4",
     "axios-auth-refresh": "^3.3.6",
     "formik": "^2.4.6",

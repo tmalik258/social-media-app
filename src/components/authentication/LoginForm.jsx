@@ -2,6 +2,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useState } from "react";
 import * as Yup from "yup";
 import { useUserActions } from "../../hooks/user.actions";
+import { Link } from "react-router-dom";
 
 function LoginForm() {
 	const [error, setError] = useState(null);
@@ -20,10 +21,9 @@ function LoginForm() {
 	};
 
 	const onSubmit = async (data) => {
-		userActions.login(data)
-			.catch((err) => {
-				if (err.message) setError(err.response.data?.detail);
-			});
+		userActions.login(data).catch((err) => {
+			if (err.message) setError(err.response.data?.detail);
+		});
 	};
 
 	const renderError = (message) => (
@@ -40,46 +40,36 @@ function LoginForm() {
 			}}
 		>
 			<Form>
-				<div className="container mx-auto w-full sm:w-96 flex flex-col gap-2 text-left bg-white rounded-md p-10">
-					<h1 className="text-2xl font-semibold">Login</h1>
+				<div className="container mx-auto w-full sm:w-[25em] flex flex-col gap-3 text-2xl shadow-lg bg-white rounded-md p-12">
+					<h1 className="text-4xl mb-2 font-semibold">Login</h1>
 					{error && (
 						<div className="p-3 bg-red-300 text-xs mb-3 rounded">
 							{error}
 						</div>
 					)}
-					<div className="field">
+					<div>
 						{/* <label className="label" htmlFor="username">
 									Username
 								</label> */}
-						<div className="control">
-							<Field
-								name="username"
-								type="text"
-								className="w-full bg-violet-50 px-3 py-2 rounded mb-1 outline-none"
-								placeholder="Username"
-							/>
-							<ErrorMessage
-								name="username"
-								render={renderError}
-							/>
-						</div>
+						<Field
+							name="username"
+							type="text"
+							className="w-full bg-violet-50 px-4 py-3 rounded-lg mb-1 outline-none"
+							placeholder="Username"
+						/>
+						<ErrorMessage name="username" render={renderError} />
 					</div>
-					<div className="field">
+					<div>
 						{/* <label className="label" htmlFor="password">
 									Password
 								</label> */}
-						<div className="control">
-							<Field
-								name="password"
-								type="password"
-								className="w-full bg-violet-50 px-3 py-2 rounded mb-1 outline-none"
-								placeholder="Password"
-							/>
-							<ErrorMessage
-								name="password"
-								render={renderError}
-							/>
-						</div>
+						<Field
+							name="password"
+							type="password"
+							className="w-full bg-violet-50 px-4 py-3 rounded-lg mb-1 outline-none"
+							placeholder="Password"
+						/>
+						<ErrorMessage name="password" render={renderError} />
 					</div>
 					<button
 						type="submit"
@@ -87,6 +77,15 @@ function LoginForm() {
 					>
 						Sign In
 					</button>
+					<div>
+						Haven&apos;t Registered yet?{" "}
+						<Link
+							to={"/register/"}
+							className="text-violet-800 hover:text-violet-900 underline"
+						>
+							Sign Up
+						</Link>
+					</div>
 				</div>
 			</Form>
 		</Formik>

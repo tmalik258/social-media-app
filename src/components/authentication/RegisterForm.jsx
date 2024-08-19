@@ -2,6 +2,7 @@ import * as Yup from "yup";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useState } from "react";
 import { useUserActions } from "../../hooks/user.actions";
+import { Link } from "react-router-dom";
 
 function RegisterForm() {
 	const [error, setError] = useState(null);
@@ -52,23 +53,22 @@ function RegisterForm() {
 		>
 			{({ errors, touched }) => (
 				<Form>
-					<div className="container mx-auto w-full sm:w-[30em] flex flex-col gap-2 text-left bg-white rounded-md p-10">
-						<h1 className="text-2xl font-semibold">Register for Free</h1>
+					<div className="container mx-auto w-full min-w-[23em] sm:w-[35em] flex flex-col gap-2 shadow-lg text-2xl bg-white rounded-md p-12">
+						<h1 className="text-4xl mb-3 font-semibold">Register for Free</h1>
 						{error && (
 							<div className="p-3 bg-red-300 text-xs mb-3 rounded">
 								{error}
 							</div>
 						)}
-						<div className="group-field flex gap-3">
-							<div className="field flex-1">
+						<div className="flex max-sm:flex-col gap-3">
+							<div className="flex-1">
 								{/* <label className="label" htmlFor="first_name">
 										First Name
 									</label> */}
-								<div className="control">
 									<Field
 										name="first_name"
 										type="text"
-										className={`w-full bg-violet-50 px-3 py-2 rounded mb-1 outline-none ${
+										className={`w-full bg-violet-50 px-4 py-3 rounded-lg mb-1 outline-none ${
 											errors.first_name &&
 											touched.first_name
 												? "border-red-500 border"
@@ -80,17 +80,15 @@ function RegisterForm() {
 										name="first_name"
 										render={renderError}
 									/>
-								</div>
 							</div>
-							<div className="field flex-1">
+							<div className="flex-1">
 								{/* <label className="label" htmlFor="last_name">
 										Last Name
 									</label> */}
-								<div className="control">
 									<Field
 										name="last_name"
 										type="text"
-										className={`w-full bg-violet-50 px-3 py-2 rounded mb-1 outline-none ${
+										className={`w-full bg-violet-50 px-4 py-3 rounded-lg mb-1 outline-none ${
 											errors.last_name &&
 											touched.last_name
 												? "border-red-500 border"
@@ -102,18 +100,16 @@ function RegisterForm() {
 										name="last_name"
 										render={renderError}
 									/>
-								</div>
 							</div>
 						</div>
-						<div className="field">
+						<div>
 							{/* <label className="label" htmlFor="username">
 									Username
 								</label> */}
-							<div className="control">
 								<Field
 									name="username"
 									type="text"
-									className={`w-full bg-violet-50 px-3 py-2 rounded mb-1 outline-none ${
+									className={`w-full bg-violet-50 px-4 py-3 rounded-lg mb-1 outline-none ${
 										errors.username && touched.username
 											? "border-red-500 border"
 											: ""
@@ -124,17 +120,15 @@ function RegisterForm() {
 									name="username"
 									render={renderError}
 								/>
-							</div>
 						</div>
-						<div className="field">
+						<div>
 							{/* <label className="label" htmlFor="email">
 									Email address
 								</label> */}
-							<div className="control">
 								<Field
 									name="email"
 									type="email"
-									className={`w-full bg-violet-50 px-3 py-2 rounded mb-1 outline-none ${
+									className={`w-full bg-violet-50 px-4 py-3 rounded-lg mb-1 outline-none ${
 										errors.email && touched.email
 											? "border-red-500 border"
 											: ""
@@ -145,18 +139,16 @@ function RegisterForm() {
 									name="email"
 									render={renderError}
 								/>
-							</div>
 						</div>
-						<div className="field">
+						<div>
 							{/* <label className="label" htmlFor="bio">
 									Bio
 								</label> */}
-							<div className="control">
 								<Field
 									name="bio"
 									as="textarea"
 									rows={3}
-									className={`w-full bg-violet-50 px-3 py-2 rounded mb-1 outline-none resize-none ${
+									className={`w-full bg-violet-50 px-4 py-3 rounded-lg mb-1 outline-none resize-none ${
 										errors.bio && touched.bio
 											? "border-red-500 border"
 											: ""
@@ -164,17 +156,15 @@ function RegisterForm() {
 									placeholder="A simple bio ... (Optional)"
 								/>
 								<ErrorMessage name="bio" render={renderError} />
-							</div>
 						</div>
-						<div className="field">
+						<div>
 							{/* <label className="label" htmlFor="password">
 									Password
 								</label> */}
-							<div className="control">
 								<Field
 									name="password"
 									type="password"
-									className={`w-full bg-violet-50 px-3 py-2 rounded mb-1 outline-none ${
+									className={`w-full bg-violet-50 px-4 py-3 rounded-lg mb-1 outline-none ${
 										errors.password && touched.password
 											? "border-red-500 border"
 											: ""
@@ -185,17 +175,15 @@ function RegisterForm() {
 									name="password"
 									render={renderError}
 								/>
-							</div>
 						</div>
-						<div className="field">
+						<div>
 							{/* <label className="label" htmlFor="confirm_password">
 									Confirm Password
 								</label> */}
-							<div className="control">
 								<Field
 									name="confirm_password"
 									type="password"
-									className={`w-full bg-violet-50 px-3 py-2 rounded mb-1 outline-none ${
+									className={`w-full bg-violet-50 px-4 py-3 rounded-lg mb-1 outline-none ${
 										errors.confirm_password &&
 										touched.confirm_password
 											? "border-red-500 border"
@@ -207,7 +195,6 @@ function RegisterForm() {
 									name="confirm_password"
 									render={renderError}
 								/>
-							</div>
 						</div>
 						<button
 							type="submit"
@@ -215,6 +202,7 @@ function RegisterForm() {
 						>
 							Sign Up
 						</button>
+						<div>Already have an account? <Link to={'/login/'} className="text-violet-800 hover:text-violet-900 underline">Sign In</Link></div>
 					</div>
 				</Form>
 			)}

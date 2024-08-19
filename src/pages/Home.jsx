@@ -4,7 +4,7 @@ function Home() {
 	return (
 		<Layout>
 			<div className="h-screen flex justify-center items-center">
-				<h1>Welcome!</h1>
+				<h1 className="text-4xl">Welcome!</h1>
 			</div>
 		</Layout>
 	);
