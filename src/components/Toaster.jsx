@@ -1,10 +1,8 @@
 import PropTypes from "prop-types";
 
-export default function Toaster(props) {
-	const { message, handleClose, type } = props;
+export default function Toaster({ message, handleClose, type }) {
 	return (
 		<div
-			id={`toast-${type}`}
 			className="transition fixed z-10 top-3 left-1/2 -translate-x-1/2 flex items-center w-full max-w-xs p-4 mb-4 text-gray-300 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-black"
 			role="alert"
 		>
@@ -28,7 +26,6 @@ export default function Toaster(props) {
 			<button
 				type="button"
 				className="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-300 dark:hover:text-white dark:bg-black dark:hover:bg-gray-900"
-				data-dismiss-target="#toast-success"
 				aria-label="Close"
 				onClick={handleClose}
 			>
